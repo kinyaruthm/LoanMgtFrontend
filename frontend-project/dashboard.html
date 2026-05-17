@@ -4,10 +4,24 @@
     <title>My First Frontend App</title>
 </head>
 <body>
-    <h1>Loan Dashboard</h1>
+    <h1>List Loans</h1>
 
     <button id="loadBtn">Load Loans</button>
-
+    <table border="1" id="loanTable">
+    <thead>
+        <tr>
+            <th>Loan ID</th>
+            <th>Name</th>
+            <th>Loanee</th>
+            <th>Amount</th>
+            <th>Period</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="loanTableBody">
+        <!-- Data goes here -->
+    </tbody>
+    </table>
     <br>
     <h2>Loan application</h2>
     <input type="text" id="loanId" placeholder="LoanID">
@@ -16,8 +30,6 @@
     <input type="number" id="period" placeholder="Loan Duration">
     <input type="number" id="loanAmount" placeholder="Loan Amount">
     <button id="apply">Send Data</button>
-
-    <pre id="output"></pre>
 
     <script src="dashboard.js"></script>
 </body>

@@ -13,8 +13,32 @@ document.getElementById("loadBtn").addEventListener("click", async () => {
         });
 
         const data = await response.json();
-        document.getElementById("output").textContent =
-            JSON.stringify(data, null, 2);
+        console.log("Page loaded");
+        console.log("TableBody:", document.getElementById("loanTableBody"));
+
+        const loans = data.data || data;
+
+        const tableBody = document.getElementById("loanTableBody");
+        if (!tableBody) {
+            console.error("loanTableBody not found!");
+            return;
+        }
+        tableBody.innerHTML = ""; // clear old data
+
+        loans.forEach(loan => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${loan.loanId || ""}</td>
+                <td>${loan.loanName || ""}</td>
+                <td>${loan.memberNumber || ""}</td>
+                <td>${loan.loanAmount || ""}</td>
+                <td>${loan.period || ""}</td>
+                <td>${loan.loanStatus || ""}</td>
+            `;
+
+            tableBody.appendChild(row);
+        });
 
     } catch (error) {
         console.error(error);
